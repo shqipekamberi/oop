@@ -1,0 +1,97 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class Person{
+    char* name;
+    char* phoneType; 
+    int year;
+
+    public:
+    Person(char* Name = "Ana", char* phone = "Samsung", int year = 2000)
+    {
+        int n = strlen(Name);
+        name = new char[n + 1];
+        strcpy(name, Name);
+        int p = strlen(phone);
+        phoneType = new char[p + 1];
+        strcpy(phoneType, phone);
+        this->year = year;
+    }
+    Person(Person& right)
+    {
+        int n = strlen(right.name);
+        name = new char[n + 1];
+        strcpy(name, right.name);
+
+        int p = strlen(right.phoneType);
+        phoneType = new char[p + 1];
+        strcpy(phoneType, right.phoneType);
+
+        year = right.year;
+    }
+    ~Person()
+    {
+        delete[]name;
+        delete[]phoneType;
+    }
+
+    void print()
+    {
+        cout << "Name: " << name;
+        cout << "Phone type: " << phoneType;
+        cout << "Year of birth: " << year;
+    }
+
+    void modify(const char *newName)
+    {
+        int n = strlen[newName];
+        name = new char[n + 1];
+        strcpy(name, newName);
+    }
+
+    void age()
+    {
+        int currentYear, age;
+        cout << "Enter current year: ";
+        cin >> currentYear;
+        age = currentYear - year;
+        cout << "Age: " << age;
+
+    }
+
+};
+
+int main()
+{
+    Person p1;
+    Person p2 = ("Era", "Huawei", 2003);
+    Person p3 = p2;
+
+    p1.print();
+    p2.print();
+    p3.print();
+
+    Person p[3];
+    int oldest;
+    cout << "The oldest person: ";
+    for(int i = 0; i < 3; i++)
+    {
+        if(p[i] > age())
+        {
+            cout
+        }
+    }
+    
+    cout << "People whose name start with A/a: ";
+    for(int i = 0; i < 3; i++)
+    {
+        if(p[i].name == 'A' || p[i].name == 'a')
+        {
+            cout << p[i];
+        }
+    }
+    
+
+}
+

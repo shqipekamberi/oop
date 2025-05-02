@@ -1,0 +1,266 @@
+1.#include <iostream>
+using namespace std;
+
+struct Sibling{
+    string name, type;
+    int order;
+
+    void input()
+    {
+        cout << "\nName: ";
+        cin >> name;
+        cout << "Type: ";
+        cin >> type;
+        cout << "Order: ";
+        cin >> order;
+    }
+    void output()
+    {
+        cout << "\nName: " << name << endl;
+        cout << "Type: " << type << endl;
+        cout << "Order: " << order << endl;
+    }
+
+};
+
+int main()
+{
+    Sibling s1, s2;
+    
+    cout << "Info about sibling 1: ";
+    s1.input();
+
+    cout << "Info about sibling 2: ";
+    s2.input();
+
+    cout << "Sibling who is a sister: ";
+    if(s1.type == "sister"){
+        s1.output();
+    }
+    if(s2.type == "sister")
+    {
+        s2.output();
+    }
+
+    return 0;
+}
+
+2.
+#include <iostream>
+using namespace std;
+
+struct Sibling{
+    string name, type;
+    int order;
+};
+struct Friend{
+    string name, email;
+    Sibling one, two;
+};
+void input(Friend& f)
+{
+    cout << "\nName of friend: ";
+    cin >> f.name;
+    cout << "Email: ";
+    cin >> f.email;
+    cout << "Info about sibling 1 (name, type, order): ";
+    cin >> f.one.name >> f.one.type >> f.one.order;
+    cout << "Info about sibling 2 (name, type, order): ";
+    cin >> f.two.name >> f.two.type >> f.two.order;
+}
+
+void output(Friend& f)
+{
+    cout << "\nName of friend: " << f.name << endl;
+    cout << "Email: " << f.email << endl;
+    cout << "Info about sibling1 : " << f.one.name << "\t" << f.one.type << "\t" << f.one.order << endl;
+    cout << "Info about sibling2 : " << f.two.name << "\t" <<f.two.type << "\t" << f.two.order << endl;
+}
+
+int main()
+{
+    Friend f1, f2;
+
+    cout << "Info about friend 1: ";
+    input(f1);
+
+    cout << "Info about friend 2: ";
+    input(f2);
+
+    cout << "Friends who have at least one sister: " << endl;
+    if(f1.one.type == "sister" || f1.two.type == "sister")
+    {
+        output(f1);
+    }
+    if(f2.one.type == "sister" || f2.two.type == "sister")
+    {
+        output(f2);
+    }
+
+    return 0;
+
+}
+
+3.
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class File{
+    public:
+    char* extension;
+    string name;
+    int capacity;
+
+    File(char* extention = ".txt", string name = "Test", int capacity = 5)
+    {
+        this->extension = new char[strlen(extension) + 1];
+        strcpy(this->extension, extension);
+        this->name = name;
+        this->capacity = capacity;
+    }
+    File(File& other)
+    {
+        this->extension = new char[strlen(other.extension) + 1];
+        strcpy(this->extension, other.extension);
+        this->name = other.name;
+        this->capacity = other.capacity;
+    }
+    ~File()
+    {
+        delete[]extension;
+    }
+
+    void print()
+    {
+        cout << "\nExtension: " << extension << endl;
+        cout << "Name: " << name << endl;
+        cout << "Capacity: " << capacity << " MB" << endl;
+    }
+};
+
+void input(File& files)
+{
+    cout << "\nFile extension: ";
+    cin >> files.extension;
+    cout << "File name: ";
+    cin >> files.name;
+    cout << "Capacity: ";
+    cin >> files.capacity;
+}
+
+int main()
+{
+    File f1, f2;
+
+    cout << "Input data about file 1: ";
+    input(f1);
+
+    cout << "Input data about file 2: ";
+    input(f2);
+
+    cout << "Details about file with highest capacity: ";
+    if(f1.capacity > f2.capacity)
+    {
+        f1.print();
+    }
+    else
+    {
+        f2.print();
+    }
+
+    return 0;
+}
+
+4.
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class File{
+    public:
+    char* extension;
+    string name;
+    int capacity;
+
+    File(char* extention = ".txt", string name = "Test", int capacity = 5)
+    {
+        this->extension = new char[strlen(extension) + 1];
+        strcpy(this->extension, extension);
+        this->name = name;
+        this->capacity = capacity;
+    }
+    File(File& other)
+    {
+        this->extension = new char[strlen(other.extension) + 1];
+        strcpy(this->extension, other.extension);
+        this->name = other.name;
+        this->capacity = other.capacity;
+    }
+    ~File()
+    {
+        delete[]extension;
+    }
+
+    void print()
+    {
+        cout << "\nExtension: " << extension << endl;
+        cout << "Name: " << name << endl;
+        cout << "Capacity: " << capacity << " MB" << endl;
+    }
+    void input()
+    {
+        cout << "\nFile extension: ";
+        cin >> extension;
+        cout << "File name: ";
+        cin >> name;
+        cout << "Capacity: ";
+        cin >> capacity;
+    }
+};
+
+
+void printFiles(File files[], int n)
+{
+    for(int i = 0; i < n; i++)
+    {
+        if(files[i].extension == ".exe" && files[i].capacity > 1)
+        {
+            files[i].print();
+        }
+
+    }
+}
+int maxCapacityFile(File files[], int n)
+{
+    int max = files[0].capacity;
+    for(int i = 0; i < n; i++)
+    {
+        if(files[i].capacity > max)
+        {
+            max = files[i].capacity;
+        }
+    }
+    return max;
+}
+
+int main()
+{
+    File files[3];
+    cout << "Number of files: ";
+    int n;
+    cin >> n;
+
+    for(int i = 0; i < 3; i++)
+    {
+        files[i].input();
+    }
+
+    cout << "Files that have extension .exe and have capacityy over 1: ";
+    printFiles(files, 3);
+
+    cout << "Maximum capacity from given files: " << maxCapacityFile(files, 3) << endl;
+
+    return 0;
+
+}

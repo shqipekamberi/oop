@@ -1,0 +1,9 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/shqipekamberi/Desktop/Semester 2/02 Object Oriented Programming/Class work/classes/class1.2'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003EC4, symSize: 0x54 }
+  - { offsetInCU: 0x2C79, offset: 0x2C79, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003EC4, symSize: 0x54 }
+  - { offsetInCU: 0x2D2F, offset: 0x2D2F, size: 0x8, addend: 0x0, symName: __ZN8TriangleC1Efff, symObjAddr: 0x54, symBinAddr: 0x100003F18, symSize: 0x44 }
+  - { offsetInCU: 0x2D81, offset: 0x2D81, size: 0x8, addend: 0x0, symName: __ZN8TriangleC2Efff, symObjAddr: 0x98, symBinAddr: 0x100003F5C, symSize: 0x44 }
+...
